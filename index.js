@@ -74,15 +74,15 @@ const displayLatestPosts = (data) => {
                     <img class="mx-auto w-full rounded-2xl" src=${post.cover_image}>
                     <div class="flex items-center gap-2">
                         <i class="fa-regular fa-calendar"></i>
-                        <p class="text-[#12132d99] ">${post.author.posted_date ? post.author.posted_date :'No publish date'}</p>
+                        <p class="text-[#12132d99] ">${post.author.posted_date ? post.author.posted_date : 'No publish date'}</p>
                     </div>
                     <h3 class="font-bold text-lg ">${post.title}</h3>
                     <p class="text-[#12132d99]">${post.description}</p>
                     <div class="flex gap-2 items-center">
                         <img class ="w-14 h-14 rounded-full" src=${post.profile_image}>
                         <div>
-                            <p class="font-semibold">Cameron Williamson</p>
-                            <p class="text-sm text-[#12132d99]">Unknown</p>
+                            <p class="font-semibold">${post.author.name}</p>
+                            <p class="text-sm text-[#12132d99]">${post.author.designation ? post.author.designation : "Unknown"}</p>
                         </div>
                     </div>
     
