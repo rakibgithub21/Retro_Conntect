@@ -4,7 +4,7 @@ const latestPostContainer = document.getElementById('latest_post_container');
 // const onlineElement = document.getElementById('online');
 
 
-const loadAllPosts = async (searchId='') => {
+const loadAllPosts = async (searchId = '') => {
     // const url = `https://openapi.programming-hero.com/api/retro-forum/posts`;
     const url = `https://openapi.programming-hero.com/api/retro-forum/posts?category=${searchId}`;
     const res = await fetch(url);
@@ -15,8 +15,9 @@ const loadAllPosts = async (searchId='') => {
 const displayAllPosts = (posts) => {
     const leftSideDynamicContainer = document.getElementById('dynamic-container');
     leftSideDynamicContainer.innerHTML = ``;
-    
+
     posts.forEach(post => {
+        console.log(post);
 
         let bgColor;
         if (post.isActive) {
@@ -33,14 +34,14 @@ const displayAllPosts = (posts) => {
             </div>
             `;
         }
-        
+
         const mainDiv = document.createElement('div');
-        mainDiv.classList = `flex gap-6 bg-[#797DFC] bg-opacity-20 p-10 rounded-2xl mb-5`
+        mainDiv.classList = `flex gap-6  bg-[#797DFC] bg-opacity-20 p-10 rounded-2xl mb-5`
         mainDiv.innerHTML = `
         <div class="relative">
                             ${bgColor}
                         </div>
-        <div class="space-y-2">
+        <div class="space-y-4 lg:space-y-8 w-full">
 
                             <div class="flex gap-5 font-medium text-sm inter">
                                 <p># <span>${post.category}</span></p>
@@ -58,7 +59,7 @@ const displayAllPosts = (posts) => {
                                     <p><i class="fa-regular fa-clock"></i> <span>${post.posted_time}</span> min</p>
                                 </div>
                                 <div>
-                                    <button class="btn bg-[#10B981] btn-circle">
+                                    <button onclick="emailButtonClicked('${post.title}',${post.view_count})" class="btn bg-[#10B981] btn-circle">
                                         <i class="fa-regular fa-envelope-open text-white font-bold text-lg"></i>
                                     </button>
                                 </div>
@@ -109,6 +110,28 @@ const displayLatestPosts = (data) => {
     })
 
 }
+
+let count = 0
+const countPlus = document.getElementById('_count');
+const emailButtonClicked = (title, view_count) => {
+    count++
+    countPlus.innerText = count;
+    console.log(title, view_count);
+    const buttonListContainer = document.getElementById('button-list-container');
+    const div = document.createElement('div');
+    div.classList = `flex justify-between items-center bg-white p-4 rounded-3xl`
+    div.innerHTML = `
+    <h3 class="text-[#12132D] font-semibold text-xl">${title}</h3>
+                            <div class="flex gap-3">
+                                <p>
+                                <p><i class="fa-regular fa-eye"></i></p>
+                                <p class="inter">${view_count}</p>
+                            </div>
+    
+    `;
+    buttonListContainer.appendChild(div)
+}
+
 
 
 const searchBtnHandler = () => {
