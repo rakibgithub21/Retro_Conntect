@@ -1,5 +1,8 @@
 const leftSideDynamicContainer = document.getElementById('dynamic-container');
 
+const latestPostContainer = document.getElementById('latest_post_container');
+
+
 const loadAllPosts = async () => {
     const url = `https://openapi.programming-hero.com/api/retro-forum/posts`;
     const res = await fetch(url);
@@ -62,7 +65,31 @@ const loadLatestPosts = async () => {
 
 
 const displayLatestPosts = (data) => {
-    console.log(data);
+    // console.log(data);
+    data.forEach(post => {
+        console.log(post);
+        const newDiv = document.createElement('div');
+        newDiv.classList = `mulish space-y-4 border border-[#12132d26] p-8 rounded-3xl`;
+        newDiv.innerHTML = `
+                    <img class="mx-auto w-full rounded-2xl" src=${post.cover_image}>
+                    <div class="flex items-center gap-2">
+                        <i class="fa-regular fa-calendar"></i>
+                        <p class="text-[#12132d99] ">${post.author.posted_date ? post.author.posted_date :'No publish date'}</p>
+                    </div>
+                    <h3 class="font-bold text-lg ">${post.title}</h3>
+                    <p class="text-[#12132d99]">${post.description}</p>
+                    <div class="flex gap-2 items-center">
+                        <img class ="w-14 h-14 rounded-full" src=${post.profile_image}>
+                        <div>
+                            <p class="font-semibold">Cameron Williamson</p>
+                            <p class="text-sm text-[#12132d99]">Unknown</p>
+                        </div>
+                    </div>
+    
+    `;
+        latestPostContainer.appendChild(newDiv);
+    })
+
 }
 
 
