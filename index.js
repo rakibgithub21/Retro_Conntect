@@ -71,6 +71,7 @@ const displayAllPosts = (posts) => {
         leftSideDynamicContainer.appendChild(mainDiv)
 
     });
+    toggleLoadingSpinner(false)
 }
 
 
@@ -135,10 +136,23 @@ const emailButtonClicked = (title, view_count) => {
 
 
 const searchBtnHandler = () => {
+    toggleLoadingSpinner(true)
     const inputField = document.getElementById('input_Field');
     const inputText = inputField.value;
     loadAllPosts(inputText);
     console.log(inputText);
+}
+
+
+
+// loader
+const toggleLoadingSpinner = (isLoading) => {
+    const loadingSpinner = document.getElementById('loading-spinner');
+    if (isLoading) {
+        loadingSpinner.classList.remove('hidden')
+    } else {
+        loadingSpinner.classList.add('hidden')
+    }
 }
 
 
