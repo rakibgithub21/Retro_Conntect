@@ -71,9 +71,7 @@ const displayAllPosts = (posts) => {
         leftSideDynamicContainer.appendChild(mainDiv)
 
     });
-    setTimeout(() => {
         toggleLoadingSpinner(false)
-    }, 2000);
 }
 
 
@@ -91,7 +89,7 @@ const displayLatestPosts = (data) => {
     data.forEach(post => {
         // console.log(post);
         const newDiv = document.createElement('div');
-        newDiv.classList = `mulish space-y-4 border border-[#12132d26] p-8 rounded-3xl`;
+        newDiv.classList = `mulish space-y-4 border border-[#12132d26] p-8  rounded-3xl`;
         newDiv.innerHTML = `
                     <img class="mx-auto w-full rounded-2xl" src=${post.cover_image}>
                     <div class="flex items-center gap-2">
@@ -115,7 +113,7 @@ const displayLatestPosts = (data) => {
 }
 
 let count = 0
-const countPlus = document.getElementById('_count');
+const countPlus = document.getElementById('count_plus');
 const emailButtonClicked = (title, view_count) => {
     count++
     countPlus.innerText = count;
