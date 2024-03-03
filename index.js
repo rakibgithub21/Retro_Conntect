@@ -1,6 +1,7 @@
 const leftSideDynamicContainer = document.getElementById('dynamic-container');
 
 const latestPostContainer = document.getElementById('latest_post_container');
+// const onlineElement = document.getElementById('online');
 
 
 const loadAllPosts = async () => {
@@ -11,16 +12,30 @@ const loadAllPosts = async () => {
 }
 
 const displayAllPosts = (posts) => {
+    
     posts.forEach(post => {
-        // console.log(post);
+        let bgColor;
+        if (post.isActive) {
+            bgColor = `
+            <img class="w-20 md:w-14 rounded-full" src=${post.image}>
+                <div id="online" class="w-3 h-3 rounded-full bg-green-600 absolute top-0 ">
+            </div>
+            `;
+        }
+        else {
+            bgColor = `
+            <img class="w-20 md:w-14 rounded-full" src=${post.image}>
+                <div id="online" class="w-3 h-3 rounded-full bg-red-600 absolute top-0 ">
+            </div>
+            `;
+        }
+
+        console.log(post);
         const mainDiv = document.createElement('div');
         mainDiv.classList = `flex gap-6 bg-[#797DFC] bg-opacity-20 p-10 rounded-2xl mb-5`
         mainDiv.innerHTML = `
         <div class="relative">
-                            <img class="w-20 md:w-14 rounded-full" src=${post.image}>
-                            <div class="w-3 h-3 rounded-full bg-green-600 absolute top-0 ">
-
-                            </div>
+                            ${bgColor}
                         </div>
         <div class="space-y-2">
 
