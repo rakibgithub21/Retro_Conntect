@@ -1,19 +1,23 @@
-const leftSideDynamicContainer = document.getElementById('dynamic-container');
+
 
 const latestPostContainer = document.getElementById('latest_post_container');
 // const onlineElement = document.getElementById('online');
 
 
-const loadAllPosts = async () => {
-    const url = `https://openapi.programming-hero.com/api/retro-forum/posts`;
+const loadAllPosts = async (searchId='') => {
+    // const url = `https://openapi.programming-hero.com/api/retro-forum/posts`;
+    const url = `https://openapi.programming-hero.com/api/retro-forum/posts?category=${searchId}`;
     const res = await fetch(url);
     const data = await res.json();
     displayAllPosts(data.posts);
 }
 
 const displayAllPosts = (posts) => {
+    const leftSideDynamicContainer = document.getElementById('dynamic-container');
+    leftSideDynamicContainer.innerHTML = ``;
     
     posts.forEach(post => {
+
         let bgColor;
         if (post.isActive) {
             bgColor = `
@@ -29,8 +33,7 @@ const displayAllPosts = (posts) => {
             </div>
             `;
         }
-
-        console.log(post);
+        
         const mainDiv = document.createElement('div');
         mainDiv.classList = `flex gap-6 bg-[#797DFC] bg-opacity-20 p-10 rounded-2xl mb-5`
         mainDiv.innerHTML = `
@@ -82,7 +85,7 @@ const loadLatestPosts = async () => {
 const displayLatestPosts = (data) => {
     // console.log(data);
     data.forEach(post => {
-        console.log(post);
+        // console.log(post);
         const newDiv = document.createElement('div');
         newDiv.classList = `mulish space-y-4 border border-[#12132d26] p-8 rounded-3xl`;
         newDiv.innerHTML = `
@@ -108,7 +111,12 @@ const displayLatestPosts = (data) => {
 }
 
 
-
+const searchBtnHandler = () => {
+    const inputField = document.getElementById('input_Field');
+    const inputText = inputField.value;
+    loadAllPosts(inputText);
+    console.log(inputText);
+}
 
 
 
