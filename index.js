@@ -71,7 +71,9 @@ const displayAllPosts = (posts) => {
         leftSideDynamicContainer.appendChild(mainDiv)
 
     });
-    toggleLoadingSpinner(false)
+    setTimeout(() => {
+        toggleLoadingSpinner(false)
+    }, 2000);
 }
 
 
