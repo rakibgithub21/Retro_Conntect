@@ -60,7 +60,7 @@ const displayAllPosts = (posts) => {
                                     <p><i class="fa-regular fa-clock"></i> <span>${post.posted_time}</span> min</p>
                                 </div>
                                 <div>
-                                    <button onclick="emailButtonClicked('${post.title}',${post.view_count})" class="btn bg-[#10B981] btn-circle">
+                                    <button onclick="emailButtonClicked('${post.title.replace(/'/g,'@')}',${post.view_count})" class="btn bg-[#10B981] btn-circle">
                                         <i class="fa-regular fa-envelope-open text-white font-bold text-lg"></i>
                                     </button>
                                 </div>
