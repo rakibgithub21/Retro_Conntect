@@ -1,7 +1,6 @@
 
-
 const latestPostContainer = document.getElementById('latest_post_container');
-// const onlineElement = document.getElementById('online');
+
 
 
 const loadAllPosts = async (searchId = '') => {
@@ -87,9 +86,7 @@ const loadLatestPosts = async () => {
 
 
 const displayLatestPosts = (data) => {
-    // console.log(data);
     data.forEach(post => {
-        // console.log(post);
         const newDiv = document.createElement('div');
         newDiv.classList = `mulish space-y-4 border border-[#12132d26] p-8  rounded-3xl`;
         newDiv.innerHTML = `
@@ -156,9 +153,6 @@ const toggleLoadingSpinner = (isLoading) => {
         loadingSpinner.classList.add('hidden')
     }
 }
-
-
-
 
 
 loadAllPosts();
