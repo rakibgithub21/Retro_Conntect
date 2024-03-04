@@ -37,7 +37,7 @@ const displayAllPosts = (posts) => {
         }
 
         const mainDiv = document.createElement('div');
-        mainDiv.classList = `flex gap-6  bg-[#797DFC] bg-opacity-20 p-10 rounded-2xl mb-5`
+        mainDiv.classList = `flex gap-6  bg-[#797DFC] bg-opacity-20 md:p-10 p-5 rounded-2xl mb-5`
         mainDiv.innerHTML = `
         <div class="relative">
                             ${bgColor}
