@@ -88,7 +88,7 @@ const loadLatestPosts = async () => {
 const displayLatestPosts = (data) => {
     data.forEach(post => {
         const newDiv = document.createElement('div');
-        newDiv.classList = `mulish space-y-4 border border-[#12132d26] p-8  rounded-3xl`;
+        newDiv.classList = `mulish space-y-4 border border-[#12132d26] md:p-8 p-4  rounded-3xl`;
         newDiv.innerHTML = `
                     <img class="mx-auto w-full rounded-2xl" src=${post.cover_image}>
                     <div class="flex items-center gap-2">
@@ -121,9 +121,8 @@ const emailButtonClicked = (title, view_count) => {
     const div = document.createElement('div');
     div.classList = `flex justify-between items-center bg-white p-4 rounded-3xl`
     div.innerHTML = `
-    <h3 class="text-[#12132D] font-semibold text-xl">${title}</h3>
+    <h3 class="text-[#12132D] font-semibold md:text-xl">${title}</h3>
                             <div class="flex gap-3">
-                                <p>
                                 <p><i class="fa-regular fa-eye"></i></p>
                                 <p class="inter">${view_count}</p>
                             </div>
