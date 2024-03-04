@@ -9,7 +9,9 @@ const loadAllPosts = async (searchId = '') => {
     const url = `https://openapi.programming-hero.com/api/retro-forum/posts?category=${searchId}`;
     const res = await fetch(url);
     const data = await res.json();
-    displayAllPosts(data.posts);
+    setTimeout(() => {
+        displayAllPosts(data.posts);
+    }, 2000);
 }
 
 const displayAllPosts = (posts) => {
